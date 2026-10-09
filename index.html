@@ -98,6 +98,19 @@
             object-fit: cover;
         }
 
+        /* --- ITINERARIO ESTILO VICTORIANO --- */
+        .timeline { position: relative; max-width: 700px; margin: 0 auto; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--dorado), transparent); top: 0; transform: translateX(-50%); }
+        .timeline-item { display: flex; justify-content: space-between; margin-bottom: 40px; position: relative; align-items: center; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-item:nth-child(even) .timeline-content { text-align: right; }
+        .timeline-item:nth-child(odd) .timeline-content { text-align: left; }
+        .timeline-empty { width: 42%; }
+        .timeline-content { width: 42%; padding: 20px; }
+        .timeline-content h4 { font-family: var(--fuente-titulos); font-size: 1.35rem; color: var(--dorado-oscuro); line-height: 1.5; }
+        .timeline-content p { font-size: 0.9rem; font-weight: 600; color: var(--texto-claro); letter-spacing: 1px; }
+        .timeline-icon { position: absolute; left: 50%; transform: translateX(-50%); background: var(--champagne-muy-claro); border: 2px double var(--dorado-oscuro); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; color: var(--dorado-oscuro); font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
         /* --- FORMULARIOS --- */
         input, select, textarea {
             width: 100%;
@@ -177,6 +190,17 @@
             section { padding: 60px 15px; }
             .time-box { min-width: 75px; padding: 15px 10px; }
             .time-box span { font-size: 2rem; }
+            
+            .timeline::before { left: 30px; transform: none; }
+            .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; align-items: center; }
+            .timeline-empty { display: none; }
+            .timeline-content, .timeline-item:nth-child(even) .timeline-content, .timeline-item:nth-child(odd) .timeline-content { 
+                width: calc(100% - 70px); 
+                padding: 15px; 
+                margin-left: auto; 
+                text-align: left; 
+            }
+            .timeline-icon { left: 30px; transform: translateX(-50%); }
         }
     </style>
 </head>
@@ -235,7 +259,6 @@
             
             <div class="calendar-widget">
                 <p style="font-weight: 600; color: var(--texto-oscuro); margin-top: 10px;">Agendar Evento</p>
-                <!-- Generador de enlace para Google Calendar -->
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Vanessa&dates=20261107T190000Z/20261108T020000Z&details=Acomp%C3%A1%C3%B1ame+a+celebrar+mis+XV+A%C3%B1os.+Ceremonia+a+las+1:00+PM+en+Parroquia+de+San+Jos%C3%A9.&location=Parroquia+de+San+Jos%C3%A9,+Gardenia+32,+Coatepec,+Ver." target="_blank" class="btn-small">
                     <i class="fa-regular fa-calendar-plus"></i> Google Calendar
                 </a>
@@ -243,7 +266,6 @@
         </section>
 
         <section class="reveal">
-            <h2>Con la bendición de mis padres</h2>
             <div class="glass-card" style="padding: 40px 30px; margin-bottom: 25px;">
                 <p style="color: var(--dorado-oscuro); letter-spacing: 3px; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px;">MIS PADRES</p>
                 <p style="font-family: var(--fuente-titulos); font-size: 1.6rem;">Elvira Ramírez Moreno<br>&<br>Giovanni Luna Piedra</p>
@@ -277,7 +299,7 @@
             <div class="glass-card" style="padding: 40px;">
                 <i class="fa-solid fa-champagne-glasses" style="font-size: 2.5rem; color: var(--dorado-oscuro); margin-bottom: 20px;"></i>
                 <h3 style="font-family: var(--fuente-titulos); font-size: 2rem;">Recepción</h3>
-                <p style="font-weight: 600; color: var(--dorado-oscuro); font-size: 1.2rem; margin-top: 15px;">A partir de las 2:30 p.m.</p>
+                <p style="font-weight: 600; color: var(--dorado-oscuro); font-size: 1.2rem; margin-top: 15px;">A partir de las 2:00 p.m.</p>
                 <p style="font-weight: 600; font-size: 1.1rem; margin-top: 5px;">Salón "El Señorial Las Tenerias"</p>
                 <p id="direccion-salon" style="margin: 10px 0 20px 0; font-size: 0.95rem; color: var(--texto-claro); font-weight: 500;">Calle 16 de septiembre N° 193, Coatepec, Ver.</p>
                 
@@ -288,6 +310,61 @@
                 <div style="margin-top: 25px;">
                     <a href="https://maps.app.goo.gl/tRCt7kjyfP6R7AYt8" target="_blank" class="btn-small"><i class="fa-solid fa-map-location-dot"></i> GPS</a>
                     <button onclick="copiarDireccion('direccion-salon')" class="btn-small"><i class="fa-solid fa-copy"></i> Copiar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ITINERARIO -->
+        <section class="reveal">
+            <h2>Itinerario</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-church"></i></div>
+                    <div class="timeline-content glass-card">
+                        <p>1:00 P.M.</p>
+                        <h4>Misa</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="timeline-content glass-card">
+                        <p>2:00 P.M.</p>
+                        <h4>Recepción</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <div class="timeline-content glass-card">
+                        <p>2:30 P.M.</p>
+                        <h4>Bienvenida</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="timeline-content glass-card">
+                        <p>3:00 P.M.</p>
+                        <h4>Comida</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="timeline-content glass-card">
+                        <p>4:30 P.M.</p>
+                        <h4>Vals</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                    <div class="timeline-content glass-card">
+                        <p>7:00 P.M.</p>
+                        <h4>Baile</h4>
+                    </div>
                 </div>
             </div>
         </section>
@@ -308,7 +385,7 @@
             <div class="glass-card" style="padding: 50px 30px;">
                 <i class="fa-regular fa-envelope" style="font-size: 2.8rem; color: var(--dorado-oscuro); margin-bottom: 20px;"></i>
                 <h3 style="font-family: var(--fuente-titulos); font-size: 2rem;">Mesa de Regalos</h3>
-                <p style="margin-top: 15px; line-height: 1.6; font-size: 1.05rem;">Para mí, tu presencia es el mejor regalo. Si deseas obsequiarme algo adicional, la dinámica será <strong>Lluvia de Sobres</strong> (se entregará un sobre el día del evento que podrás depositar en el buzón).</p>
+                <p style="font-weight: 700; letter-spacing: 3px; font-size: 1.2rem; margin-top: 15px; text-transform: uppercase;">Lluvia de Sobres</p>
             </div>
         </section>
 
@@ -319,13 +396,8 @@
                 
                 <input type="text" id="guestName" placeholder="Tu nombre completo">
                 
-                <select id="guestCount">
-                    <option value="" disabled selected>Pases confirmados (Número de personas)</option>
-                    <option value="1">1 Persona</option>
-                    <option value="2">2 Personas</option>
-                    <option value="3">3 Personas</option>
-                    <option value="4">4 Personas</option>
-                    <option value="5">5 Personas</option>
+                <select id="guestCount" style="display: none;">
+                    <!-- Opciones inyectadas vía JavaScript si hay parámetro ?p=n -->
                 </select>
 
                 <select id="attendance">
@@ -396,24 +468,47 @@
             }
         }
 
-        // 2. WhatsApp Confirmación
+        // 2. Lógica para mostrar select de pases dinámicamente si el parámetro ?p= está presente
+        const urlParams = new URLSearchParams(window.location.search);
+        const numPases = urlParams.get('p');
+        const guestCountSelect = document.getElementById('guestCount');
+
+        if (numPases && !isNaN(numPases) && parseInt(numPases) > 0) {
+            guestCountSelect.style.display = 'block';
+            let optionsHTML = '<option value="" disabled selected>Número de personas confirmadas</option>';
+            for(let i = 1; i <= parseInt(numPases); i++) {
+                optionsHTML += `<option value="${i}">${i} Persona${i > 1 ? 's' : ''}</option>`;
+            }
+            guestCountSelect.innerHTML = optionsHTML;
+        }
+
+        // 3. WhatsApp Confirmación
         function sendWhatsApp() {
             const name = document.getElementById('guestName').value;
-            const count = document.getElementById('guestCount').value;
             const attend = document.getElementById('attendance').value;
             const phone = "522282388573"; 
+            let countText = "";
 
-            if(!name || !count) {
-                alert("Por favor completa tu nombre y número de personas.");
+            if (guestCountSelect.style.display !== 'none') {
+                const count = guestCountSelect.value;
+                if(!count) {
+                    alert("Por favor selecciona tu número de personas.");
+                    return;
+                }
+                countText = ` Seremos ${count} personas en total.`;
+            }
+
+            if(!name) {
+                alert("Por favor escribe tu nombre completo.");
                 return;
             }
 
-            const text = `¡Hola! Soy ${name}. Confirmo que ${attend} a los XV Años de Vanessa. Seremos ${count} personas en total.`;
+            const text = `¡Hola! Soy ${name}. Confirmo que ${attend} a los XV Años de Vanessa.${countText}`;
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
 
-        // 3. WhatsApp Muro de Deseos
+        // 4. WhatsApp Muro de Deseos
         function sendWishWhatsApp() {
             const name = document.getElementById('wishName').value;
             const message = document.getElementById('wishMessage').value;
@@ -433,7 +528,7 @@
             document.getElementById('wishMessage').value = "";
         }
 
-        // 4. Función Copiar Dirección
+        // 5. Función Copiar Dirección
         function copiarDireccion(id) {
             const texto = document.getElementById(id).innerText;
             navigator.clipboard.writeText(texto).then(() => {
@@ -443,7 +538,7 @@
             });
         }
 
-        // 5. Cuenta Regresiva (7 Nov 2026 a las 13:00)
+        // 6. Cuenta Regresiva (7 Nov 2026 a las 13:00)
         const targetDate = new Date("Nov 7, 2026 13:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -457,7 +552,7 @@
             }
         }, 1000);
 
-        // 6. Reveal & Particles
+        // 7. Reveal & Particles
         function reveal() {
             const revs = document.querySelectorAll(".reveal");
             revs.forEach(r => {
